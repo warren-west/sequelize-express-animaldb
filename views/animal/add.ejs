@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Animal</title>
+    <%- include('../partials/styling.ejs') %>
+</head>
+<body>
+    <%- include('../partials/navbar.ejs') %>
+    <form action="/animals/add" method="post">
+        <label for="animal-name">Animal name: </label>
+        <input id="animal-name" name="Name" type="text">
+
+        <button type="submit">Add 🐶</button>
+    </form>
+</body>
+</html>

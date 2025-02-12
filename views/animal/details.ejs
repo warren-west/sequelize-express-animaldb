@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Details</title>
+    <%- include('../partials/styling.ejs') %>
+</head>
+
+<body>
+    <%- include('../partials/navbar.ejs') %>
+
+        <h1>Details for <%= animal.Name %>
+        </h1>
+        <small><i>id: <%= animal.id %></i></small>
+        <p>
+            <%= animal.Name %> is a <%= animal.Species.Name %>
+        </p>
+
+        <form action="/animals/<%= animal.id %>/update" method="post">
+            <label for="animal-name">Animal name: </label>
+            <input id="animal-name" name="Name" type="text" value="<%= animal.Name %>">
+            <select name="SpeciesId" id="animal-species">
+                <option value="default">Select a species</option>
+                <% species.forEach(s=> { %>
+                    <option value="<%= s.id %>">
+                        <%= s.Name %>
+                    </option>
+                    <% }) %>
+            </select>
+
+            <button type="submit">Update 🐷</button>
+        </form>
+        <br>
+        <br>
+        <form action="/animals/<%= animal.id %>/delete" method="post">
+            <button type="submit">Delete</button>
+        </form>
+</body>
+
+</html>

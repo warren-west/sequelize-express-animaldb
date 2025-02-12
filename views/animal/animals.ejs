@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View All Animals</title>
+    <%- include('../partials/styling.ejs') %>
+</head>
+<body>
+    <%- include('../partials/navbar.ejs') %>
+    
+    <h1>All Animals:</h1>
+
+    <ul>
+        <% results.forEach(animal => { %>
+            <a href="/animals/<%= animal.id %>"><li><%= animal.id %>: <%= animal.Name %></li></a>
+        <% }) %>
+    </ul>
+
+</body>
+</html>

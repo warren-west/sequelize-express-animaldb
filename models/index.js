@@ -52,7 +52,9 @@ db.Species = require('./species')(sequelize)
 // create associations (multiplicities)
 db.Animal.belongsTo(db.Species)
 db.Animal.belongsToMany(db.Toy, { through: 'AnimalToy' })
-db.Species.hasMany(db.Animal)
+db.Species.hasMany(db.Animal, {
+    onDelete: 'CASCADE' // by default, onDelete: 'SET NULL'
+})
 db.Toy.belongsToMany(db.Animal, { through: 'AnimalToy' })
 
 // Object.keys(db).forEach(modelName => {
@@ -60,5 +62,7 @@ db.Toy.belongsToMany(db.Animal, { through: 'AnimalToy' })
 //         db[modelName].associate(db)
 //     }
 // })
+
+require('../db/seedDatabase')(db)
 
 module.exports = db

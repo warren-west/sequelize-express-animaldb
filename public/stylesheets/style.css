@@ -6,3 +6,104 @@ body {
 a {
   color: #00B7FF;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  /* Collapse borders for a cleaner look */
+  margin-bottom: 20px;
+  /* Add some spacing below the table */
+}
+
+th,
+td {
+  padding: 12px 15px;
+  /* Comfortable cell padding */
+  text-align: left;
+  /* Align text to the left by default */
+  border-bottom: 1px solid #ddd;
+  /* Light border between rows */
+}
+
+thead th {
+  background-color: #f2f2f2;
+  /* Light gray background for header */
+  font-weight: bold;
+  /* Make header text bolder */
+  text-transform: uppercase;
+  /* Optional: Uppercase header text */
+  border-bottom: 2px solid #ccc;
+  /* Slightly thicker bottom border for header */
+}
+
+tr:hover {
+  background-color: #f6fcff;
+  /* Highlight rows on hover */
+}
+nav {
+  background-color: #333; /* Dark background color */
+  padding: 10px;
+  font-size: 1.2em;
+}
+
+nav ul {
+  list-style: none; /* Remove bullet points */
+  margin: 0;
+  padding: 0;
+  display: flex; /* Arrange list items horizontally */
+  justify-content: center; /* Center the items */
+}
+
+nav li {
+  margin: 0 15px; /* Add spacing between items */
+}
+
+nav a {
+  text-decoration: none; /* Remove underlines from links */
+  color: white; /* White text color */
+  font-weight: bold;
+  padding: 8px 12px; /* Add some padding around the text */
+  border-radius: 5px; /* Optional: Add rounded corners */
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+nav a:hover {
+  background-color: #555; /* Slightly lighter background on hover */
+  color: #f0f0f0; /* Slightly lighter text on hover */
+}
+
+/* Optional: Add a border to the navbar */
+nav {
+  border-bottom: 2px solid #007bff; /* Example: Blue border */
+}
+
+/* Optional: Make the navbar sticky */
+nav {
+position: sticky;
+top: 0;
+z-index: 100; /* Ensure it's above other content */
+}
+
+.tag-text {
+  padding: 5px 12px;
+  background-color: #ece5ee;
+  border-radius: 3px;
+}
+
+.tag-text:hover {
+  background-color: #e8dbec;
+  cursor: pointer;
+}
+
+.tag-container, .details-container {
+  margin-bottom: 3rem;
+}
+
+/* Optional: Responsive table styling (if needed) */
+@media screen and (max-width: 600px) {
+  table {
+    display: block;
+    /* Make the table scrollable horizontally */
+    overflow-x: auto;
+  }
+}
