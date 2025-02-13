@@ -1,11 +1,14 @@
 [
     {
-        "Name": "Galaxy"
+        "Name": "Galaxy",
+        "SpeciesId": 1
     },
     {
-        "Name": "Spot"
+        "Name": "Spot",
+        "SpeciesId": 2
     },
     {
-        "Name": "Rufus"
+        "Name": "Rufus",
+        "SpeciesId": 3
     }
 ]

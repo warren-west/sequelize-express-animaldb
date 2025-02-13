@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const AnimalService = require('../services/animalService')
 const db = require('../models/index')
+const { checkIfAuthorized, isAdmin } = require('./authMiddlewares')
 const animalService = new AnimalService(db)
 
 // get all animals
@@ -12,7 +13,9 @@ router.get('/', async function(req, res) {
 });
 
 router.get('/add', (req, res) => {
-  res.render('animal/add')
+  const userId = req.user?.id ?? 0
+  const userRole = req.user?.Role ?? "Guest"
+  res.render('animal/add', { userId, userRole })
 })
 
 router.get('/:id', async (req, res) => {
@@ -24,7 +27,7 @@ router.get('/:id', async (req, res) => {
   res.render('animal/details', { animal: parsedResult, species: [ { id: 1, Name: 'Dog' }, { id: 2, Name: 'Cat' }, { id: 3, Name: 'Pig' } ] })
 })
 
-router.post('/add', async (req, res) => {
+router.post('/add', checkIfAuthorized, isAdmin, async (req, res) => {
   console.log(req.body)
 
   try {
@@ -36,7 +39,7 @@ router.post('/add', async (req, res) => {
       res.redirect('/animals')
     }
     else
-      res.send("Something went wrong")
+      res.end()
 
   } catch (err) {
     console.log(err)
@@ -44,7 +47,7 @@ router.post('/add', async (req, res) => {
   }
 })
 
-router.post('/:id/update', async (req, res) => {
+router.post('/:id/update', checkIfAuthorized, isAdmin, async (req, res) => {
   try {
     console.log(req.body)
     const result = await animalService.update(req.params.id, req.body.Name, req.body.SpeciesId)
@@ -64,7 +67,7 @@ router.post('/:id/update', async (req, res) => {
   }
 })
 
-router.post('/:id/delete', async (req, res) => {
+router.post('/:id/delete', checkIfAuthorized, isAdmin, async (req, res) => {
   try {
     const result = await animalService.delete(req.params.id)
     const parsedResult = JSON.parse(JSON.stringify(result))

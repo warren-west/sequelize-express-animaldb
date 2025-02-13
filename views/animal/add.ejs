@@ -12,7 +12,11 @@
         <label for="animal-name">Animal name: </label>
         <input id="animal-name" name="Name" type="text">
 
-        <button type="submit">Add 🐶</button>
+        <% if (userId !== 0 && userRole == "Admin") { %>
+            <button onclick="addAnimal()">Add 🐶</button>
+        <% } else { %>
+            <p>You must <a href="/login">log in</a> to add animals</p>
+        <% } %>
     </form>
 </body>
 </html>

@@ -8,24 +8,23 @@ const { Sequelize } = require('sequelize')
 const db = {}
 
 // connect to the database with environment variables
-// const sequelize = new Sequelize(
-//     process.env.DATABASE_NAME,
-//     process.env.DATABASE_USERNAME,
-//     process.env.DATABASE_PASSWORD,
-//     {
-//         dialect: process.env.DIALECT,
-//         dialectModel: process.env.DIALECTMODEL,
-//     })
+const sequelize = new Sequelize(
+    process.env.DATABASE_NAME,
+    process.env.DATABASE_USERNAME,
+    process.env.DATABASE_PASSWORD,
+    {
+        dialect: process.env.DIALECT
+    })
 
-const connection = {
-    dialect: 'mysql',
-    dialectModel: 'mysql2',
-    database: 'animaldb',
-    username: 'root',
-    password: 'admin',
-    host: 'localhost'
-}
-const sequelize = new Sequelize(connection)
+// const connection = {
+//     dialect: 'mysql',
+//     dialectModel: 'mysql2',
+//     database: 'animaldb',
+//     username: 'root',
+//     password: 'admin',
+//     host: 'localhost'
+// }
+// const sequelize = new Sequelize(connection)
 
 // attach the sequelize object we just created to db (which is exported)
 db.sequelize = sequelize
@@ -48,21 +47,22 @@ db.sequelize = sequelize
 db.Animal = require('./animal')(sequelize)
 db.Toy = require('./toy')(sequelize)
 db.Species = require('./species')(sequelize)
+db.User = require('./users')(sequelize)
 
 // create associations (multiplicities)
 db.Animal.belongsTo(db.Species)
 db.Animal.belongsToMany(db.Toy, { through: 'AnimalToy' })
 db.Species.hasMany(db.Animal, {
-    onDelete: 'CASCADE' // by default, onDelete: 'SET NULL'
+    onDelete: "CASCADE"
 })
 db.Toy.belongsToMany(db.Animal, { through: 'AnimalToy' })
+db.Animal.belongsTo(db.User)
+db.User.hasMany(db.Animal)
 
 // Object.keys(db).forEach(modelName => {
 //     if (db[modelName].associate) {
 //         db[modelName].associate(db)
 //     }
 // })
-
-require('../db/seedDatabase')(db)
 
 module.exports = db
