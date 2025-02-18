@@ -1,0 +1,32 @@
+{
+    "records": [
+        {
+            "id": 0,
+            "query": "INSERT INTO toys (Name) VALUES ('Piece of string');"
+        },
+        {
+            "id": 1,
+            "query": "INSERT INTO toys (Name) VALUES ('Scratch pad');"
+        },
+        {
+            "id": 2,
+            "query": "INSERT INTO toys (Name) VALUES ('Toy mouse');"
+        },
+        {
+            "id": 3,
+            "query": "INSERT INTO toys (Name) VALUES ('Ball');"
+        },
+        {
+            "id": 4,
+            "query": "INSERT INTO toys (Name) VALUES ('Stick');"
+        },
+        {
+            "id": 5,
+            "query": "INSERT INTO toys (Name) VALUES ('Hamster ball');"
+        },
+        {
+            "id": 6,
+            "query": "INSERT INTO toys (Name) VALUES ('Hamster wheel');"
+        }
+    ]
+}

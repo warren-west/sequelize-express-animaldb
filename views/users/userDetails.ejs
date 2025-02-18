@@ -13,7 +13,10 @@
 <body>
     <%-include('../partials/navbar.ejs')%>
     <div class="container">
-        <h2 class="text-center text-primary"><i><%=user.FirstName%> <%=user.LastName%></i></h2>
+        <h2 class="text-center text-primary"><i><%=user.firstName%> <%=user.lastName%></i></h2>
+        <p><b>Username: </b><i><%= locals.user.username %></i></p>
+        <p><b>Role: </b><i><%= locals.user.role.Name %></i></p>
+        <p><b>Role ID: </b><i><%= locals.user.role.id %></i></p>
     </div>
 </body>
 

@@ -9,5 +9,5 @@
     [x] Last Name
     [x] Role
 [x] Link the Users table to Animals table
-[] Complete the steps from JSS module 2.3
-[] Complete the steps from DAB module 3.4
+[x] Complete the steps from JSS module 2.3
+[x] Complete the steps from DAB module 3.4

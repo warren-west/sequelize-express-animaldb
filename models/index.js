@@ -47,18 +47,24 @@ db.sequelize = sequelize
 db.Animal = require('./animal')(sequelize)
 db.Toy = require('./toy')(sequelize)
 db.Species = require('./species')(sequelize)
+db.Role = require('./role')(sequelize)
 db.User = require('./users')(sequelize)
 
 // create associations (multiplicities)
 db.Animal.belongsTo(db.Species)
-db.Animal.belongsToMany(db.Toy, { through: 'AnimalToy' })
+db.Animal.belongsToMany(db.Toy, { through: 'AnimalToy', timestamps: false })
 db.Species.hasMany(db.Animal, {
     onDelete: "CASCADE"
 })
-db.Toy.belongsToMany(db.Animal, { through: 'AnimalToy' })
+db.Toy.belongsToMany(db.Animal, { through: 'AnimalToy', timestamps: false })
 db.Animal.belongsTo(db.User)
 db.User.hasMany(db.Animal)
+db.User.belongsTo(db.Role)
+db.Role.hasMany(db.User)
 
+//In the online material, you see the code below,
+// which loops through each model attached to the db,
+// and calls the "associate" function (which we have not included in this demo)
 // Object.keys(db).forEach(modelName => {
 //     if (db[modelName].associate) {
 //         db[modelName].associate(db)

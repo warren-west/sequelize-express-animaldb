@@ -1,0 +1,12 @@
+{
+    "records": [
+        {
+            "id": 0,
+            "query": "INSERT INTO roles (Name) VALUES ('User');"
+        },
+        {
+            "id": 1,
+            "query": "INSERT INTO roles (Name) VALUES ('Admin');"
+        }
+    ]
+}

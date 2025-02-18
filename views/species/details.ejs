@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Species Details</title>
+    <%- include('../partials/styling.ejs') %>
+</head>
+
+<body>
+    <%- include('../partials/navbar.ejs') %>
+
+        <h1>Details for <%= species.Name %>
+        </h1>
+        <small><i>id: <%= species.id %></i></small>
+
+        <form action="/species/<%= species.id %>/update" method="post">
+            <label for="species-name">Species name: </label>
+            <input id="species-name" name="Name" type="text" value="<%= species.Name %>">
+
+            <button type="submit">Update 🐾</button>
+        </form>
+        <br>
+        <% if (species.Animals.length> 0) { %>
+            <h2>Associated with these animals:</h2>
+            <ul>
+                <% species.Animals.forEach(a=> { %>
+                    <a href="/animals/<%= a.id %>">
+                        <li>
+                            <%= a.Name %>
+                        </li>
+                    </a>
+                    <% }) %>
+            </ul>
+
+            <% } else { %>
+                <h2>No animals associated with <%= species.Name %>
+                </h2>
+                <% } %>
+                    <br>
+                    <% if (locals.user && locals.user.role.Name==="Admin" ) { %>
+                        <form action="/species/<%= species.id %>/delete" method="post">
+                            <button type="submit">Delete</button>
+                        </form>
+                        <% } %>
+</body>
+
+</html>

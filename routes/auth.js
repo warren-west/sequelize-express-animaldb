@@ -2,7 +2,6 @@ const router = require('express').Router()
 var passport = require('passport')
 const crypto = require('crypto')
 var LocalStrategy = require('passport-local')
-const fs = require('fs')
 const UserService = require('../services/userService')
 const db = require('../models/index')
 const userService = new UserService(db)
@@ -27,7 +26,13 @@ passport.use(new LocalStrategy(function verify(username, password, cb) {
 // serializing user data
 passport.serializeUser(function (user, cb) {
     process.nextTick(function () {
-        cb(null, { id: user.id, username: user.Username, role: user.Role })
+        cb(null, {
+            id: user.id,
+            username: user.Username,
+            firstName: user.FirstName,
+            lastName: user.LastName,
+            role: user.Role,
+        })
     })
 })
 

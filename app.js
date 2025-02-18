@@ -6,16 +6,20 @@ var logger = require('morgan')
 var session = require('express-session');
 var passport = require('passport');
 
-// const db = require('./models/index')
-// db.sequelize.sync({ force: false, alter: true })
+const db = require('./models/index')
+db.sequelize.sync({ force: true, alter: true })
 
-const { initializeDb } = require('./db/seedDatabase')
-initializeDb()
+// const { initializeDb } = require('./db/seedDatabase')
+// initializeDb()
 
-var indexRouter = require('./routes/index')
-var animalsRouter = require('./routes/animals')
-var usersRouter = require('./routes/users')
-var authRouter = require('./routes/auth')
+const { addUserToRes } = require('./routes/authMiddlewares')
+const indexRouter = require('./routes/index')
+const animalsRouter = require('./routes/animals')
+const speciesRouter = require('./routes/species')
+const toysRouter = require('./routes/toys')
+const reportsRouter = require('./routes/reports')
+const usersRouter = require('./routes/users')
+const authRouter = require('./routes/auth')
 
 var app = express()
 
@@ -37,8 +41,13 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.use(addUserToRes) // add logged in user to res object for all pages
+
 app.use('/', indexRouter)
 app.use('/animals', animalsRouter)
+app.use('/species', speciesRouter)
+app.use('/toys', toysRouter)
+app.use('/reports', reportsRouter)
 app.use('/users', usersRouter)
 app.use('/login', authRouter)
 

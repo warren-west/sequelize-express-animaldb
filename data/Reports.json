@@ -1,0 +1,32 @@
+{
+    "scripts": [
+        {
+            "name": "getTotalSpecies",
+            "query": "SELECT COUNT(*) AS Total FROM species;"
+        },
+        {
+            "name": "getTotalAnimals",
+            "query": "SELECT COUNT(*) AS Total FROM animals;"
+        },
+        {
+            "name": "getTotalToys",
+            "query": "SELECT COUNT(*) AS Total FROM toys;"
+        },
+        {
+            "name": "getPopularToys",
+            "query": "SELECT Name, COUNT(AnimalToy.AnimalId) AS AnimalCount FROM AnimalToy JOIN Toys ON AnimalToy.ToyId = toys.id GROUP BY toys.name ORDER BY AnimalCount DESC, toys.Name;"
+        },
+        {
+            "name": "getAnimalNamesWithP",
+            "query": "SELECT Name FROM animals WHERE Name LIKE 'P%';"
+        },
+        {
+            "name": "getAnimalNamesAsc",
+            "query": "SELECT Name FROM animals ORDER BY Name;"
+        },
+        {
+            "name": "getAnimalsPerSpecies",
+            "query": "SELECT species.Name, COUNT(species.id) AS AnimalCount FROM species JOIN animals ON species.id = animals.SpeciesId GROUP BY species.Name ORDER BY AnimalCount DESC, species.Name;"
+        }
+    ]
+}

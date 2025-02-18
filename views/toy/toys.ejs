@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View All Toys</title>
+    <%- include('../partials/styling.ejs') %>
+</head>
+<body>
+    <%- include('../partials/navbar.ejs') %>
+    
+    <h1>All Toys:</h1>
+
+    <ul>
+        <% toys.forEach(toy => { %>
+            <a href="/toys/<%= toy.id %>"><li><%= toy.id %>: <%= toy.Name %></li></a>
+        <% }) %>
+    </ul>
+
+    <% if (locals.user && locals.user.role.Name === "Admin") { %>
+        <a href="/toys/add">Add a new toy...</a>
+    <% } %>
+</body>
+</html>

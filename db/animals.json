@@ -9,6 +9,22 @@
     },
     {
         "Name": "Rufus",
+        "SpeciesId": 2
+    },
+    {
+        "Name": "Mouse",
+        "SpeciesId": 1
+    },
+    {
+        "Name": "Yoda",
+        "SpeciesId": 1
+    },
+    {
+        "Name": "Pinky",
+        "SpeciesId": 3
+    },
+    {
+        "Name": "Plonky",
         "SpeciesId": 3
     }
 ]

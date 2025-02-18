@@ -1,0 +1,36 @@
+{
+    "records": [
+        {
+            "id": 0,
+            "query": "INSERT INTO animals (Name, SpeciesId) VALUES ('Spot', 1);"
+        },
+        {
+            "id": 1,
+            "query": "INSERT INTO animals (Name, SpeciesId) VALUES ('Rufus', 1);"
+        },
+        {
+            "id": 2,
+            "query": "INSERT INTO animals (Name, SpeciesId) VALUES ('Bingo', 1);"
+        },
+        {
+            "id": 3,
+            "query": "INSERT INTO animals (Name, SpeciesId) VALUES ('Mouse', 2);"
+        },
+        {
+            "id": 4,
+            "query": "INSERT INTO animals (Name, SpeciesId) VALUES ('Yoda', 2);"
+        },
+        {
+            "id": 5,
+            "query": "INSERT INTO animals (Name, SpeciesId) VALUES ('Galaxy', 2);"
+        },
+        {
+            "id": 6,
+            "query": "INSERT INTO animals (Name, SpeciesId) VALUES ('Pinky', 3);"
+        },
+        {
+            "id": 7,
+            "query": "INSERT INTO animals (Name, SpeciesId) VALUES ('Ponky', 3);"
+        }
+    ]
+}

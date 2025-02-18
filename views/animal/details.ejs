@@ -23,7 +23,7 @@
             <input id="animal-name" name="Name" type="text" value="<%= animal.Name %>">
             <select name="SpeciesId" id="animal-species">
                 <option value="default">Select a species</option>
-                <% species.forEach(s=> { %>
+                <% species.forEach(s => { %>
                     <option value="<%= s.id %>">
                         <%= s.Name %>
                     </option>
@@ -34,9 +34,11 @@
         </form>
         <br>
         <br>
-        <form action="/animals/<%= animal.id %>/delete" method="post">
-            <button type="submit">Delete</button>
-        </form>
+        <% if (locals.user && locals.user.role.Name === "Admin") { %>
+            <form action="/animals/<%= animal.id %>/delete" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        <% } %>
 </body>
 
 </html>

@@ -16,10 +16,6 @@ module.exports = (sequelize) => {
         Salt: {
             type: DataTypes.BLOB,
             allowNull: false
-        },
-        Role: {
-           type: DataTypes.STRING,
-           defaultValue: "User"
         }
     },{
         timestamps: false

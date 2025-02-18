@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Animal</title>
     <%- include('../partials/styling.ejs') %>
 </head>
+
 <body>
     <%- include('../partials/navbar.ejs') %>
-    <form action="/animals/add" method="post">
-        <label for="animal-name">Animal name: </label>
-        <input id="animal-name" name="Name" type="text">
+        <% if (locals.user && locals.user.role.Name=="Admin" ) { %>
+            <form action="/animals/add" method="post">
+                <label for="animal-name">Animal name: </label>
+                <input id="animal-name" name="Name" type="text">
 
-        <% if (userId !== 0 && userRole == "Admin") { %>
-            <button onclick="addAnimal()">Add 🐶</button>
-        <% } else { %>
-            <p>You must <a href="/login">log in</a> to add animals</p>
-        <% } %>
-    </form>
+                <button onclick="addAnimal()">Add 🐶</button>
+            </form>
+            <% } else { %>
+                <p>&#9432; You must be <a href="/login">logged in</a> as an <i>admin</i> to add animals</p>
+                <% } %>
 </body>
+
 </html>

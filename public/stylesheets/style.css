@@ -75,6 +75,7 @@ nav a:hover {
 /* Optional: Add a border to the navbar */
 nav {
   border-bottom: 2px solid #007bff; /* Example: Blue border */
+  margin-bottom: 1.5em;
 }
 
 /* Optional: Make the navbar sticky */

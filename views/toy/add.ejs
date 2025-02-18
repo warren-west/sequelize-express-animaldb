@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Toy</title>
+    <%- include('../partials/styling.ejs') %>
+</head>
+<body>
+    <%- include('../partials/navbar.ejs') %>
+    <% if (locals.user && locals.user.role.Name == "Admin") { %>
+    <form action="/toys/add" method="post">
+        <label for="toy-name">Toy name: </label>
+        <input id="toy-name" name="Name" type="text">
+
+            <button type="submit">Add 🪀</button>
+        <% } else { %>
+            <p>&#9432; You must be <a href="/login">logged in</a> as an <i>admin</i> to add toys</p>
+        <% } %>
+    </form>
+</body>
+</html>

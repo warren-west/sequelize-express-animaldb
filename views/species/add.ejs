@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Species</title>
+    <%- include('../partials/styling.ejs') %>
+</head>
+<body>
+    <%- include('../partials/navbar.ejs') %>
+    <form action="/species/add" method="post">
+        <label for="species-name">Species name: </label>
+        <input id="species-name" name="Name" type="text">
+
+        <% if (userId !== 0 && locals.user.role.Name == "Admin") { %>
+            <button onclick="addSpecies()">Add 🐾</button>
+        <% } else { %>
+            <p>&#9432; You must be <a href="/login">logged in</a> as an <i>admin</i> to add species</p>
+        <% } %>
+    </form>
+</body>
+</html>

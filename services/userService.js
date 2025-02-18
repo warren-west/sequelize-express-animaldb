@@ -11,8 +11,9 @@ class UserService {
                 LastName: lastName,
                 Username: username,
                 Salt: salt,
-                EncryptedPassword: encryptedPassword
+                EncryptedPassword: encryptedPassword,
                 // Role is set by default to "User", can be updated by an admin in MySql
+                RoleId: 1, // 1 = "User"
             }
         )
     }
@@ -26,13 +27,13 @@ class UserService {
     async getOne(userId) {
         return await this.User.findOne({
             where: { id: userId },
-            // include: ['Animal'] // if we want to fetch associated data
+            include: ['Role'] // include the user's Role
         })
     }
     async getOneByName(username) {
         return await this.User.findOne({
             where: { username: username },
-            // include: ['Animal'] // if we want to fetch associated data
+            include: ['Role'] // include the user's Role
         })
     }
 

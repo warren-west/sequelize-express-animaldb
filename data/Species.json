@@ -1,0 +1,16 @@
+{
+    "records": [
+        {
+            "id": 0,
+            "query": "INSERT INTO species (Name) VALUES ('Dog');"
+        },
+        {
+            "id": 1,
+            "query": "INSERT INTO species (Name) VALUES ('Cat');"
+        },
+        {
+            "id": 2,
+            "query": "INSERT INTO species (Name) VALUES ('Hamster');"
+        }
+    ]
+}

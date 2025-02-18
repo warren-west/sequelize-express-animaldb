@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('./partials/styling.ejs') %>
+</head>
+<body>
+    <%- include('./partials/navbar.ejs') %>
+    
+    <h1>Stats:</h1>
+
+    <p><b>Total species:</b> <%= locals.report.totalSpecies[0].Total %></p>
+    <p><b>Total animals:</b> <%= locals.report.totalAnimals[0].Total %></p>
+    <p><b>Total toys:</b> <%= locals.report.totalToys[0].Total %></p>
+
+    <p><b>Most popular toys:</b></p>
+    <ul>
+        <% locals.report.popularToys.forEach(toy => { %>
+         <li>(<%= toy.AnimalCount %>): <%= toy.Name %></li>
+        <% }) %>
+    </ul>
+
+    <p><b>Animal names beginning with "P":</b></p>
+    <ul>
+        <% locals.report.pNames.forEach(a => { %>
+            <li><%= a.Name %></li>
+        <% }) %>
+    </ul>
+
+    <p><b>Animal names ordered:</b></p>
+    <ul>
+        <% locals.report.animalNamesOrdered.forEach(a => { %>
+            <li><%= a.Name %></li>
+        <% }) %>
+    </ul>
+
+    <p><b>Species with the most animals:</b></p>
+    <ul>
+        <% locals.report.animalsPerSpecies.forEach(s => { %>
+            <li>(<%= s.AnimalCount %>): <%= s.Name %></li>
+        <% }) %>
+    </ul>
+</body>
+</html>
